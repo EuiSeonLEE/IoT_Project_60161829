@@ -144,6 +144,7 @@ void loop() {
     int readTemp;
   
     //readDHT11(&readTemp); 센서데이터 함수
+    //깃허브테스트용 문구
     
     /*char TSBuffer[200];
     char IFBuffer[80];
