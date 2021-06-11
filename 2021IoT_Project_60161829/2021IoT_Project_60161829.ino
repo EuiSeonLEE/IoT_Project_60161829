@@ -6,12 +6,15 @@
 #include <PubSubClient.h>
 #include "AnotherIFTTTWebhook.h"
 
+#define trig 12    // D6 : GPIO12
+#define echo 13    // D7 : GPIO13
+#define ANALOGPIN A0   // MQ-135
 
 HTTPClient myClient;
 LiquidCrystal_I2C lcd(0x27,16,2);
 const int led2 = 2;
 int BTT_result, BTT_chose;
-
+int mqdata = 0;
 
 void inputpw(String *password){
   int value = 0;
@@ -136,6 +139,10 @@ void setup() {
  Serial.printf("MY IP Address : %s\r\n",WiFi.localIP().toString().c_str());
 
  pinMode(led2, OUTPUT);
+
+ pinMode(trig, OUTPUT);    // trig 와 연결된 핀(D6)을 출력핀으로 사용
+ pinMode(echo, INPUT);     // echo 와 연결된 핀(D7)을 입력핀으로 사용
+ Serial.println("측정 시작!!!");
 }
 
 
