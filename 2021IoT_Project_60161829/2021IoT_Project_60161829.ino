@@ -147,8 +147,36 @@ void setup() {
 
 
 void loop() {
- 
-    int readTemp;
+  ////////////냄새 측정!!//////////////
+  mqdata = analogRead(ANALOGPIN);
+  delay(1000);
+  Serial.print("CO2 ppm value : ");
+  Serial.println(mqdata);
+
   
-    delay(200000);
+  ////////////물체 감지!!//////////////
+  int distance, measure;
+   // 트리거 핀으로 10us 동안 펄스 출력
+   
+   digitalWrite(trig, LOW);   // Trig 핀 강제 Low 상태 셋팅
+   delayMicroseconds(2);      // 2us 동안 Low 상태 유지
+   
+   digitalWrite(trig, HIGH);  // High 상태로 셋팅
+   delayMicroseconds(10);     // 10us 동안 High 상태 유지
+   digitalWrite(trig, LOW);   // Low 상태로 셋팅
+ 
+   measure = pulseIn(echo, HIGH);  // pulseIn은 지정된 포트에서 펄스를 읽음 (High / Low)
+
+   distance = measure / 58;
+ 
+   Serial.print("측정된 거리: ");
+   Serial.print(distance);
+   Serial.println("cm");      // cm단위로 측정 후 계산된 값을 시리얼 통신으로 전송
+
+
+   if(distance <= 15 && mqdata >= 1000)
+   {
+   send_webhook("PET", "hzh9j5sWsqYGPXQBkeMFC","","","");
+   }
+   delay(10000);
 }
