@@ -5,12 +5,13 @@
 #include <ArduinoJson.h>
 #include <PubSubClient.h>
 #include "AnotherIFTTTWebhook.h"
-#define DHT11PIN 14
+
 
 HTTPClient myClient;
 LiquidCrystal_I2C lcd(0x27,16,2);
 const int led2 = 2;
-int BTT;
+int BTT_result, BTT_chose;
+
 
 void inputpw(String *password){
   int value = 0;
@@ -30,18 +31,21 @@ void inputpw(String *password){
       break;
     }
     delay(100);
-    value = analogRead(A0); //가변저항 읽기
-    BTT = digitalRead(14); //스위치 읽기
-    value2 = (value-2)/(1022/92);
-    wifipw[cnt] = value2+31;
+    BTT_chose = digitalRead(13);
+    BTT_result = digitalRead(14); //스위치 읽기
+    
+    value +=  1 * BTT_chose; //스위치 읽기
+
+    wifipw[cnt] = (value+31)%124;
     if(wifipw[cnt] == 31){
       wifipw[cnt] = 0;
     }
-    delay(100);
+    
+    delay(50);
     lcd.setCursor(cnt+3, 1);
     lcd.print((String)wifipw[cnt]);
-    Serial.printf("value = %d, pw[%d] = %c, btt = %d\r\n",value2,cnt,wifipw[cnt],BTT);
-    if(BTT){ 
+    Serial.printf("pw[%d] = %c, btt = %d\r\n",cnt,wifipw[cnt],BTT_result);
+    if(BTT_result){ 
       if(wifipw[cnt] == 123){ //아스키코드 123 입력시 다시입력
       lcd.clear();
       lcd.print("['{' = Retyping]");
@@ -57,6 +61,7 @@ void inputpw(String *password){
     }
   }
 }
+
 void setup() {
  Serial.begin(115200);
  delay(1000);
