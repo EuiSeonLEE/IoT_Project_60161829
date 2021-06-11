@@ -143,21 +143,5 @@ void loop() {
  
     int readTemp;
   
-    //readDHT11(&readTemp); 센서데이터 함수
-    //깃허브테스트용 문구
-    
-    /*char TSBuffer[200];
-    char IFBuffer[80];
-    snprintf(TSBuffer,sizeof(TSBuffer),"http://api.thingspeak.com/update?api_key=W9A28S50RN1LC3BV&field1=%ld&field2=%ld",readTemp);
-    snprintf(IFBuffer,sizeof(IFBuffer),"%ld",readTemp);
-    
-    myClient.begin(TSBuffer);
-    myClient.GET();
-    myClient.getString();
-    myClient.end();
-    
-    send_webhook("DHT11","dA1d3k1GerkMWbdvmYeSAt",IFBuffer,"","");
-    Serial.printf("Temp:%d\r\n", readTemp);*/
-      
     delay(200000);
 }
