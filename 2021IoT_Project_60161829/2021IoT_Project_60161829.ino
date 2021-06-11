@@ -132,19 +132,16 @@ void setup() {
     }
   delay(500);
   }
-   
  }
-
+ 
  Serial.printf("MY Mac Address : %s\r\n",WiFi.macAddress().c_str());
  Serial.printf("MY IP Address : %s\r\n",WiFi.localIP().toString().c_str());
 
  pinMode(led2, OUTPUT);
-
  pinMode(trig, OUTPUT);    // trig 와 연결된 핀(D6)을 출력핀으로 사용
  pinMode(echo, INPUT);     // echo 와 연결된 핀(D7)을 입력핀으로 사용
  Serial.println("측정 시작!!!");
 }
-
 
 void loop() {
   ////////////냄새 측정!!//////////////
@@ -152,7 +149,6 @@ void loop() {
   delay(1000);
   Serial.print("CO2 ppm value : ");
   Serial.println(mqdata);
-
   
   ////////////물체 감지!!//////////////
   int distance, measure;
@@ -173,10 +169,9 @@ void loop() {
    Serial.print(distance);
    Serial.println("cm");      // cm단위로 측정 후 계산된 값을 시리얼 통신으로 전송
 
-
    if(distance <= 15 && mqdata >= 1000)
    {
-   send_webhook("PET", "hzh9j5sWsqYGPXQBkeMFC","","","");
+   send_webhook("PET", "hzh9j5sWsqYGPXQBkeMFC","","",""); // 연결된 IFTTT앱으로 알람
    }
    delay(10000);
 }
