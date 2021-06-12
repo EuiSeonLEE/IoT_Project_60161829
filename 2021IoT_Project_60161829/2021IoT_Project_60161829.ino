@@ -138,13 +138,10 @@ void setup() {
  Serial.printf("MY Mac Address : %s\r\n",WiFi.macAddress().c_str());
  Serial.printf("MY IP Address : %s\r\n",WiFi.localIP().toString().c_str());
 
-<<<<<<< HEAD
-=======
- pinMode(led2, OUTPUT);
  pinMode(trig, OUTPUT);    // trig 와 연결된 핀(D6)을 출력핀으로 사용
  pinMode(echo, INPUT);     // echo 와 연결된 핀(D7)을 입력핀으로 사용
  Serial.println("측정 시작!!!");
->>>>>>> 5d37dd4a24cda1508debf30bb6b70e82921836fc
+
 }
 
 void loop() {
@@ -154,24 +151,6 @@ void loop() {
   Serial.print("CO2 ppm value : ");
   Serial.println(mqdata);
   
-<<<<<<< HEAD
-    //readDHT11(&readTemp); 센서데이터 함수
-    
-    /*char TSBuffer[200];
-    char IFBuffer[80];
-    snprintf(TSBuffer,sizeof(TSBuffer),"http://api.thingspeak.com/update?api_key=W9A28S50RN1LC3BV&field1=%ld&field2=%ld",readTemp);
-    snprintf(IFBuffer,sizeof(IFBuffer),"%ld",readTemp);
-    
-    myClient.begin(TSBuffer);
-    myClient.GET();
-    myClient.getString();
-    myClient.end();
-    
-    send_webhook("DHT11","dA1d3k1GerkMWbdvmYeSAt",IFBuffer,"","");
-    Serial.printf("Temp:%d\r\n", readTemp);*/
-      
-  
-=======
   ////////////물체 감지!!//////////////
   int distance, measure;
    // 트리거 핀으로 10us 동안 펄스 출력
@@ -191,10 +170,9 @@ void loop() {
    Serial.print(distance);
    Serial.println("cm");      // cm단위로 측정 후 계산된 값을 시리얼 통신으로 전송
 
-   if(distance <= 15 && mqdata >= 1000)
+   if(distance <= 20 && mqdata >= 500)
    {
    send_webhook("PET", "hzh9j5sWsqYGPXQBkeMFC","","",""); // 연결된 IFTTT앱으로 알람
    }
    delay(10000);
-
 }
