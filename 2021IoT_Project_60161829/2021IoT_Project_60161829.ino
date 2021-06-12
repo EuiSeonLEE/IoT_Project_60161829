@@ -6,11 +6,14 @@
 #include <PubSubClient.h>
 #include "AnotherIFTTTWebhook.h"
 
+#define trig 12    // D6 : GPIO12
+#define echo 13    // D7 : GPIO13
+#define ANALOGPIN A0   // MQ-135
 
 HTTPClient myClient;
 LiquidCrystal_I2C lcd(0x27,16,2);
 int BTT_result, BTT_chose;
-
+int mqdata = 0;
 
 void inputpw(String *password){
   int value = 0;
@@ -130,19 +133,28 @@ void setup() {
     }
   delay(500);
   }
-   
  }
-
+ 
  Serial.printf("MY Mac Address : %s\r\n",WiFi.macAddress().c_str());
  Serial.printf("MY IP Address : %s\r\n",WiFi.localIP().toString().c_str());
 
+<<<<<<< HEAD
+=======
+ pinMode(led2, OUTPUT);
+ pinMode(trig, OUTPUT);    // trig 와 연결된 핀(D6)을 출력핀으로 사용
+ pinMode(echo, INPUT);     // echo 와 연결된 핀(D7)을 입력핀으로 사용
+ Serial.println("측정 시작!!!");
+>>>>>>> 5d37dd4a24cda1508debf30bb6b70e82921836fc
 }
 
-
 void loop() {
- 
-    int readTemp;
+  ////////////냄새 측정!!//////////////
+  mqdata = analogRead(ANALOGPIN);
+  delay(1000);
+  Serial.print("CO2 ppm value : ");
+  Serial.println(mqdata);
   
+<<<<<<< HEAD
     //readDHT11(&readTemp); 센서데이터 함수
     
     /*char TSBuffer[200];
@@ -158,5 +170,31 @@ void loop() {
     send_webhook("DHT11","dA1d3k1GerkMWbdvmYeSAt",IFBuffer,"","");
     Serial.printf("Temp:%d\r\n", readTemp);*/
       
-    delay(200000);
+  
+=======
+  ////////////물체 감지!!//////////////
+  int distance, measure;
+   // 트리거 핀으로 10us 동안 펄스 출력
+   
+   digitalWrite(trig, LOW);   // Trig 핀 강제 Low 상태 셋팅
+   delayMicroseconds(2);      // 2us 동안 Low 상태 유지
+   
+   digitalWrite(trig, HIGH);  // High 상태로 셋팅
+   delayMicroseconds(10);     // 10us 동안 High 상태 유지
+   digitalWrite(trig, LOW);   // Low 상태로 셋팅
+ 
+   measure = pulseIn(echo, HIGH);  // pulseIn은 지정된 포트에서 펄스를 읽음 (High / Low)
+
+   distance = measure / 58;
+ 
+   Serial.print("측정된 거리: ");
+   Serial.print(distance);
+   Serial.println("cm");      // cm단위로 측정 후 계산된 값을 시리얼 통신으로 전송
+
+   if(distance <= 15 && mqdata >= 1000)
+   {
+   send_webhook("PET", "hzh9j5sWsqYGPXQBkeMFC","","",""); // 연결된 IFTTT앱으로 알람
+   }
+   delay(10000);
+
 }
