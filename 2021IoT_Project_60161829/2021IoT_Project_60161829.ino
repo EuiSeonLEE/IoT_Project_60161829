@@ -9,7 +9,6 @@
 
 HTTPClient myClient;
 LiquidCrystal_I2C lcd(0x27,16,2);
-const int led2 = 2;
 int BTT_result, BTT_chose;
 
 
@@ -32,7 +31,7 @@ void inputpw(String *password){
     }
     delay(100);
     BTT_chose = digitalRead(13);
-    BTT_result = digitalRead(14); //스위치 읽기
+    BTT_result = digitalRead(15); //스위치 읽기
     
     value +=  1 * BTT_chose; //스위치 읽기
 
@@ -65,6 +64,8 @@ void inputpw(String *password){
 void setup() {
  Serial.begin(115200);
  delay(1000);
+ 
+ pinMode(15, INPUT_PULLUP);
  
  lcd.init();
  lcd.backlight();
@@ -135,7 +136,6 @@ void setup() {
  Serial.printf("MY Mac Address : %s\r\n",WiFi.macAddress().c_str());
  Serial.printf("MY IP Address : %s\r\n",WiFi.localIP().toString().c_str());
 
- pinMode(led2, OUTPUT);
 }
 
 
@@ -144,7 +144,6 @@ void loop() {
     int readTemp;
   
     //readDHT11(&readTemp); 센서데이터 함수
-    //깃허브테스트용 문구
     
     /*char TSBuffer[200];
     char IFBuffer[80];
