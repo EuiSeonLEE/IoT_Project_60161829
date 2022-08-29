@@ -17,8 +17,11 @@
 ## 3. stack
 ### 사용 언어 & 프로그램
 
-><img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white"/></a> 
-><img src="https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=Arduino&logoColor=white"/></a> 
-><img src="https://img.shields.io/badge/ESP8266-E7352C?style=flat-square&logo=Espressif&logoColor=white"/></a>
-><img src="https://img.shields.io/badge/IFTTT-000000?style=flat-square&logo=IFTTT&logoColor=white"/></br>
-> 사용 센서 및 엑츄에이터 : **TXT-LCD** / **MQ-135** / **HC-SR04**
+- <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white"/></a> 
+- <img src="https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=Arduino&logoColor=white"/></a> 
+- <img src="https://img.shields.io/badge/ESP8266-E7352C?style=flat-square&logo=Espressif&logoColor=white"/></a>
+- <img src="https://img.shields.io/badge/IFTTT-000000?style=flat-square&logo=IFTTT&logoColor=white"/></br>
+- 사용 센서 및 엑츄에이터 
+  - **TXT-LCD**
+  - **MQ-135** 
+  - **HC-SR04**
