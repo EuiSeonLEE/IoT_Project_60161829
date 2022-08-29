@@ -6,8 +6,12 @@
 ## 2. 제작기간 & 참여인원
 - 2022년 02월 16일 ~ 02월 22일
 - 팀 프로젝트
-  - **이의선** : Button 및 WiFi 접속 Source Code 작성
-  - **심정환** : MQ-135 및 HC-SR04 동작 Source Code 작성, HTTP 접속 후 IFTTT Webhook 연동 Source Code 작성
+  - **이의선**
+    - Button 및 TEXT-LCD 동작 Source Code 작성
+    - WiFi 접속 시스템 Source Code 작성
+  - **심정환** 
+    - MQ-135 및 HC-SR04 동작 Source Code 작성
+    - HTTP Client 접속 후 IFTTT Webhook 연동 Source Code 작성
 <br/>
 
 ## 3. stack
