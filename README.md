@@ -7,12 +7,14 @@
 - 2022년 02월 16일 ~ 02월 22일
 - 팀 프로젝트
   - **이의선** : Button 및 WiFi 접속 Source Code 작성
-  - **심정환** : 
+  - **심정환** : MQ-135 및 HC-SR04 동작 Source Code 작성, HTTP 접속 후 IFTTT Webhook 연동 Source Code 작성
 <br/>
 
 ## 3. stack
 ### 사용 언어 & 프로그램
 
-- <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white"/>
-- <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=Opencv"/>
-- <img src="https://img.shields.io/badge/Visual Studio-5C2D91?style=flat-square&logo=Visual Studio&logoColor=white"/></a> 
+><img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white"/></a> 
+><img src="https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=Arduino&logoColor=white"/></a> 
+><img src="https://img.shields.io/badge/ESP8266-E7352C?style=flat-square&logo=Espressif&logoColor=white"/></a>
+><img src="https://img.shields.io/badge/IFTTT-000000?style=flat-square&logo=IFTTT&logoColor=white"/></br>
+> 사용 센서 및 엑츄에이터 : **TXT-LCD** / **MQ-135** / **HC-SR04**
